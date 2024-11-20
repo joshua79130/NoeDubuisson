@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'univers de Noé</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFD1DC, #87CEEB);
+            color: #333;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border: 4px solid #FFA500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, 
+                #FF69B4 0%, 
+                #FFD700 25%, 
+                #98FB98 50%, 
+                #87CEEB 75%, 
+                #DDA0DD 100%
+            );
+        }
+
+        h1 {
+            color: #FF4500;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 0 #FFF, 
+                         4px 4px 0 #FFD700;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h2 {
+            color: #4169E1;
+            margin-top: 30px;
+            font-size: 1.8em;
+            border-bottom: 3px dotted #FFD700;
+            padding-bottom: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .section-button {
+            background: linear-gradient(145deg, #FF69B4, #FF1493);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: 'Comic Sans MS', cursive;
+            box-shadow: 0 4px 0 #C71585;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .section-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 0 #C71585;
+            background: linear-gradient(145deg, #FF1493, #FF69B4);
+        }
+
+        .section-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #C71585;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            margin-top: 20px;
+            border: 3px solid #87CEEB;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #444;
+            padding: 15px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0;
+            padding: 10px 15px 10px 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1.1em;
+        }
+
+        li::before {
+            content: '🌟';
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .decoration {
+            position: absolute;
+            font-size: 2em;
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .star {
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .section-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            li {
+                margin: 10px 0;
+                padding: 8px 12px 8px 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration star" style="top: 20px; left: 10%;">⭐</div>
+    <div class="decoration star" style="top: 50px; right: 15%;">🌟</div>
+    <div class="decoration star" style="bottom: 30px; left: 20%;">⭐</div>
+
+    <h1>🌈 L'univers de Noé 🌈</h1>
+
+    <div class="container">
+        <nav class="nav-menu">
+            <button class="section-button" onclick="showSection('intro')">✨ Introduction</button>
+            <button class="section-button" onclick="showSection('difference')">🎈 Ma mucoviscidose</button>
+            <button class="section-button" onclick="showSection('contagion')">🤔 Est-ce contagieux ?</button>
+            <button class="section-button" onclick="showSection('protection')">🛡️ Me protéger</button>
+            <button class="section-button" onclick="showSection('copain')">🤝 Être un bon copain</button>
+        </nav>
+
+        <div id="intro" class="section active">
+            <h2>✨ L'histoire de Noé</h2>
+            <p>Aujourd’hui, je viens vous parler de moi. On a tous des différences: certains portent des lunettes, d’autres sont en fauteuil roulant. Moi, j’ai une maladie qui ne se voit pas. Je vais vous l’expliquer. </p>
+        </div>
+
+        <div id="difference" class="section">
+            <h2>🎈 La mucoviscidose et moi</h2>
+            <p>Quand j’étais dans le ventre de ma maman, j’avais déjà cette maladie en moi. </p>
+            <ul>
+                <li>La mucoviscidose fait du mal à mes poumons et les rend plus fragile.</li>
+                <li>Comme mes poumons commencent à s’abîmer, il va falloir faire attention que je tombe le moins malade possible.</li>
+            </ul>
+        </div>
+
+        <div id="contagion" class="section">
+            <h2>🤔 Est-ce contagieux ?</h2>
+            <p> Je ne peux pas vous donner ma mucoviscidose. C’est comme la couleur de mes yeux: Je suis né avec. Vous ne pouvez pas l’attraper, même en jouant avec moi !</p>
+        </div>
+
+        <div id="protection" class="section">
+            <h2>🛡️ Comment m'aider à rester en forme</h2>
+            <p>Mes poumons sont un peu plus fragiles, alors voici quelques gestes simples qui m'aident à rester en pleine forme :</p>
+            <ul>
+                <li>Se laver les mains régulièrement, surtout avant de jouer ensemble</li>
+                <li>Utiliser un mouchoir quand on éternue ou on tousse</li>
+                <li>Si vous êtes enrhumés, mieux vaut me prévenir pour qu'on garde un peu de distance</li>
+                <li>Éviter de me souffler directement dessus quand on joue</li>
+                <li>Me dire si vous ne vous sentez pas bien, comme ça on peut s'adapter !</li>
+                <li>Mettre un masque si vous êtes malade</li>
+            </ul>
+            <p>Ces petits gestes sont super importants pour moi, et en plus, ils sont bons pour tout le monde ! 🌟</p>
+        </div>
+        <div id="copain" class="section">
+            <h2>🤝 Être un bon copain</h2>
+            <ul>
+                <li>Continuez à jouer avec moi comme avant</li>
+                <li>Ne vous inquiétez pas si je dois sortir un moment de la classe</li>
+                <li>Parfois, j'aurai besoin de me reposer un peu plus</li>
+                <li>N'hésitez pas à me poser des questions</li>
+                <li>Restons les super copains que nous sommes déjà !</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.opacity = '0';
+                section.classList.remove('active');
+            });
+            
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.add('active');
+            setTimeout(() => {
+                selectedSection.style.opacity = '1';
+            }, 50);
+        }
+    </script>
+</body>
+</html>
